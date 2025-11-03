@@ -201,15 +201,6 @@ function validateForm(form) {
         clearError('email');
     }
 
-    // Validate LinkedIn URL (optional field)
-    const linkedin = form.linkedin.value.trim();
-    if (linkedin && !isValidURL(linkedin)) {
-        showError('linkedin', 'Please enter a valid URL (e.g., https://linkedin.com/in/yourprofile)');
-        isValid = false;
-    } else {
-        clearError('linkedin');
-    }
-
     // Validate Inquiry Type
     const inquiryType = form.inquiryType.value;
     if (!inquiryType) {
@@ -357,7 +348,7 @@ function initializeForm() {
     });
 
     // Real-time validation on blur
-    const fields = ['name', 'email', 'linkedin', 'inquiryType', 'message'];
+    const fields = ['name', 'email', 'inquiryType', 'message'];
     fields.forEach(fieldId => {
         const field = document.getElementById(fieldId);
         if (field) {
