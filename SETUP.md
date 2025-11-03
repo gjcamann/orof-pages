@@ -68,6 +68,8 @@ Add the following fields **in this exact order** with these settings:
 | Name | Short answer | Yes |
 | Email | Short answer | Yes |
 | Company/Organization | Short answer | No |
+| Phone Number | Short answer | No |
+| LinkedIn Profile | Short answer | No |
 | Type of Inquiry | Dropdown | Yes |
 | Message | Paragraph | Yes |
 
@@ -113,6 +115,8 @@ This is the trickiest part but essential for the form to work.
    entry.123456789: John Doe
    entry.987654321: john@example.com
    entry.555555555: Acme Corp
+   entry.111111111: +1 (555) 123-4567
+   entry.222222222: https://linkedin.com/in/johndoe
    entry.444444444: Partner
    entry.333333333: I'm interested in partnering...
    ```
@@ -121,6 +125,8 @@ This is the trickiest part but essential for the form to work.
    - `entry.123456789` → Name
    - `entry.987654321` → Email
    - `entry.555555555` → Company
+   - `entry.111111111` → Phone Number
+   - `entry.222222222` → LinkedIn Profile
    - `entry.444444444` → Type of Inquiry
    - `entry.333333333` → Message
 
@@ -138,6 +144,8 @@ const GOOGLE_FORM_CONFIG = {
         name: 'entry.123456789',        // Replace with your Name entry ID
         email: 'entry.987654321',       // Replace with your Email entry ID
         company: 'entry.555555555',     // Replace with your Company entry ID
+        phone: 'entry.111111111',       // Replace with your Phone Number entry ID
+        linkedin: 'entry.222222222',    // Replace with your LinkedIn Profile entry ID
         inquiryType: 'entry.444444444', // Replace with your Inquiry Type entry ID
         message: 'entry.333333333'      // Replace with your Message entry ID
     }

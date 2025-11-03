@@ -21,6 +21,8 @@ const GOOGLE_FORM_CONFIG = {
         name: 'entry.YOUR_NAME_ENTRY_ID',
         email: 'entry.YOUR_EMAIL_ENTRY_ID',
         company: 'entry.YOUR_COMPANY_ENTRY_ID',
+        phone: 'entry.YOUR_PHONE_ENTRY_ID',
+        linkedin: 'entry.YOUR_LINKEDIN_ENTRY_ID',
         inquiryType: 'entry.YOUR_INQUIRY_TYPE_ENTRY_ID',
         message: 'entry.YOUR_MESSAGE_ENTRY_ID'
     }
@@ -248,6 +250,8 @@ async function submitToGoogleSheets(formData) {
     googleFormData.append(GOOGLE_FORM_CONFIG.entries.name, formData.get('name'));
     googleFormData.append(GOOGLE_FORM_CONFIG.entries.email, formData.get('email'));
     googleFormData.append(GOOGLE_FORM_CONFIG.entries.company, formData.get('company') || '');
+    googleFormData.append(GOOGLE_FORM_CONFIG.entries.phone, formData.get('phone') || '');
+    googleFormData.append(GOOGLE_FORM_CONFIG.entries.linkedin, formData.get('linkedin') || '');
     googleFormData.append(GOOGLE_FORM_CONFIG.entries.inquiryType, formData.get('inquiryType'));
     googleFormData.append(GOOGLE_FORM_CONFIG.entries.message, formData.get('message'));
 
