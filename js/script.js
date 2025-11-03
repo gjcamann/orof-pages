@@ -14,15 +14,17 @@
  */
 const GOOGLE_FORM_CONFIG = {
     // Your Google Form ID (found in the form URL)
-    formId: 'YOUR_FORM_ID_HERE',
+    formId: '1FAIpQLScLDbyJPpUOXdUIVaAYw6GyJzs9oPhjoNTgPaQ_z7TFGZ01aw',
 
     // Entry IDs for each form field (inspect your Google Form to find these)
     entries: {
-        name: 'entry.YOUR_NAME_ENTRY_ID',
-        email: 'entry.YOUR_EMAIL_ENTRY_ID',
-        company: 'entry.YOUR_COMPANY_ENTRY_ID',
-        inquiryType: 'entry.YOUR_INQUIRY_TYPE_ENTRY_ID',
-        message: 'entry.YOUR_MESSAGE_ENTRY_ID'
+        name: 'entry.2000920391',
+        email: 'entry.1493338375',
+        company: 'entry.1952683113',
+        phone: 'entry.1637344009',
+        linkedin: 'entry.1812956717',
+        inquiryType: 'entry.16114381',
+        message: 'entry.1078507875'
     }
 };
 
@@ -124,6 +126,20 @@ function isValidEmail(email) {
 }
 
 /**
+ * Validates URL format
+ * @param {string} url - URL to validate
+ * @returns {boolean} True if valid URL format
+ */
+function isValidURL(url) {
+    try {
+        const urlObj = new URL(url);
+        return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
+    } catch (e) {
+        return false;
+    }
+}
+
+/**
  * Displays error message for a form field
  * @param {string} fieldId - ID of the form field
  * @param {string} message - Error message to display
@@ -183,6 +199,15 @@ function validateForm(form) {
         isValid = false;
     } else {
         clearError('email');
+    }
+
+    // Validate LinkedIn URL (optional field)
+    const linkedin = form.linkedin.value.trim();
+    if (linkedin && !isValidURL(linkedin)) {
+        showError('linkedin', 'Please enter a valid URL (e.g., https://linkedin.com/in/yourprofile)');
+        isValid = false;
+    } else {
+        clearError('linkedin');
     }
 
     // Validate Inquiry Type
@@ -248,6 +273,8 @@ async function submitToGoogleSheets(formData) {
     googleFormData.append(GOOGLE_FORM_CONFIG.entries.name, formData.get('name'));
     googleFormData.append(GOOGLE_FORM_CONFIG.entries.email, formData.get('email'));
     googleFormData.append(GOOGLE_FORM_CONFIG.entries.company, formData.get('company') || '');
+    googleFormData.append(GOOGLE_FORM_CONFIG.entries.phone, formData.get('phone') || '');
+    googleFormData.append(GOOGLE_FORM_CONFIG.entries.linkedin, formData.get('linkedin') || '');
     googleFormData.append(GOOGLE_FORM_CONFIG.entries.inquiryType, formData.get('inquiryType'));
     googleFormData.append(GOOGLE_FORM_CONFIG.entries.message, formData.get('message'));
 
@@ -330,7 +357,7 @@ function initializeForm() {
     });
 
     // Real-time validation on blur
-    const fields = ['name', 'email', 'inquiryType', 'message'];
+    const fields = ['name', 'email', 'linkedin', 'inquiryType', 'message'];
     fields.forEach(fieldId => {
         const field = document.getElementById(fieldId);
         if (field) {
