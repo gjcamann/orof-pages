@@ -126,6 +126,20 @@ function isValidEmail(email) {
 }
 
 /**
+ * Validates URL format
+ * @param {string} url - URL to validate
+ * @returns {boolean} True if valid URL format
+ */
+function isValidURL(url) {
+    try {
+        const urlObj = new URL(url);
+        return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
+    } catch (e) {
+        return false;
+    }
+}
+
+/**
  * Displays error message for a form field
  * @param {string} fieldId - ID of the form field
  * @param {string} message - Error message to display
@@ -185,6 +199,15 @@ function validateForm(form) {
         isValid = false;
     } else {
         clearError('email');
+    }
+
+    // Validate LinkedIn URL (optional field)
+    const linkedin = form.linkedin.value.trim();
+    if (linkedin && !isValidURL(linkedin)) {
+        showError('linkedin', 'Please enter a valid URL (e.g., https://linkedin.com/in/yourprofile)');
+        isValid = false;
+    } else {
+        clearError('linkedin');
     }
 
     // Validate Inquiry Type
@@ -334,7 +357,7 @@ function initializeForm() {
     });
 
     // Real-time validation on blur
-    const fields = ['name', 'email', 'inquiryType', 'message'];
+    const fields = ['name', 'email', 'linkedin', 'inquiryType', 'message'];
     fields.forEach(fieldId => {
         const field = document.getElementById(fieldId);
         if (field) {
