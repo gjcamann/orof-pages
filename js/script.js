@@ -14,17 +14,17 @@
  */
 const GOOGLE_FORM_CONFIG = {
     // Your Google Form ID (found in the form URL)
-    formId: 'YOUR_FORM_ID_HERE',
+    formId: '1FAIpQLScLDbyJPpUOXdUIVaAYw6GyJzs9oPhjoNTgPaQ_z7TFGZ01aw',
 
     // Entry IDs for each form field (inspect your Google Form to find these)
     entries: {
-        name: 'entry.YOUR_NAME_ENTRY_ID',
-        email: 'entry.YOUR_EMAIL_ENTRY_ID',
-        company: 'entry.YOUR_COMPANY_ENTRY_ID',
-        phone: 'entry.YOUR_PHONE_ENTRY_ID',
-        linkedin: 'entry.YOUR_LINKEDIN_ENTRY_ID',
-        inquiryType: 'entry.YOUR_INQUIRY_TYPE_ENTRY_ID',
-        message: 'entry.YOUR_MESSAGE_ENTRY_ID'
+        name: 'entry.2000920391',
+        email: 'entry.1493338375',
+        company: 'entry.1952683113',
+        phone: 'entry.1637344009',
+        linkedin: 'entry.1812956717',
+        inquiryType: 'entry.16114381',
+        message: 'entry.1078507875'
     }
 };
 
