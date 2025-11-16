@@ -1,6 +1,6 @@
 # Optimal Rate of Failure
 
-> **A Product Lab**
+> **An [x] Lab**
 > *Risk is essential. Balance is optimal.*
 
 ---
